@@ -1,0 +1,16 @@
+{
+  "schema": "pace-public-config-v1",
+  "public_algorithm": "icsp",
+  "measured_repetitions": 1,
+  "module": "baselines",
+  "internal_algorithm": "sicsp-pref",
+  "jvm_heap": "2g",
+  "threads": 1,
+  "timeout_seconds": 600,
+  "cleanup_seconds": 30,
+  "preprocessing_timeout_seconds": 120,
+  "memory_limit_mb": 8192,
+  "warmup_runs": 1,
+  "extra_args": [],
+  "provenance": "Frozen R24 v0 SICSP-Pref baseline configuration."
+}

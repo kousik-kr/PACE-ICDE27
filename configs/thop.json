@@ -1,0 +1,17 @@
+{
+  "schema": "pace-public-config-v1",
+  "public_algorithm": "thop",
+  "measured_repetitions": 1,
+  "module": "indexed_thop",
+  "internal_algorithm": "thop-full-network-indexed",
+  "jvm_heap": "12g",
+  "threads": 24,
+  "timeout_seconds": null,
+  "cleanup_seconds": null,
+  "preprocessing_timeout_seconds": null,
+  "memory_limit_mb": null,
+  "warmup_runs": 1,
+  "extra_args": [],
+  "independent_samples": 12,
+  "provenance": "Indexed THop Experiment A, BTHP-v2/PTHP-v4, frozen THopFullNetworkQueryBatch."
+}

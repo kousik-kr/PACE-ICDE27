@@ -1,0 +1,60 @@
+{
+  "figure_data_uncompressed_bytes": 910169,
+  "figure_data_uncompressed_sha256": "9521b39e579d50ca5397c72cc37a936288ccc4f4a89cb287456fbe3354a60336",
+  "figure_generator": "case_studies/nyc_shuttle/scripts/render_v2_richest_visual.py",
+  "figure_source": "figures/v2_role_a_nyc-q012-morning-r20.{pdf,png}",
+  "historical_v2_runner_jar": "experiments/results/Final-result/NYC-real-shuttle-v2/provenance/execution/pace-bench-v2.jar (external to this package)",
+  "included_sha256": {
+    "config_json": "11ec60896bf68833963eb3f5c9cf5d32898526cbec911c61b8f0297dc742e826",
+    "figure_data_json_gz": "231b5440f67c16678c266e5ed52f0488e6be8701bd8492287d07bbe48b744ccb",
+    "figure_pdf": "d6f786518548d98af7e3503ab0f1a8792d59fd4bc53b99645e73ca6ec1c89cb0",
+    "figure_png": "ed3aa6b8ae0db6a824ec830f5b7d4d54bc748fe9fdf6b103ae048d52e913c7e0",
+    "graph_manifest_json": "181a7946fe547f3052e25e606206d98a647de9c9a4d03a13f880b5319493c48e",
+    "plot_script": "7a1785f9228350e7fa0139aab3ee3a617c87a60b6e7e450fe71b6ac82c9a3f36",
+    "query_jsonl": "f0f06354fc1a1143d63b3676d227573ae36e49e1507c7caa08853bf5f49d7b1f",
+    "readme": "c3c331329039d99edd1aa1c5bd86e635043bb5dcc643d1f8c482435191bd942b",
+    "requirements": "49a2110bd4ec535ea7867712e2976a9d5f2f82d109205602fb0231358d9f35ee",
+    "result_jsonl": "9d78e691a1143994954464d6f1bf6e1eb24286839f153f6f8721fe87a95638a4",
+    "validation_jsonl": "5aaf5f1a8241d85235baebd8a8381d3b8385f1acff0e05bfac809058b022acaa"
+  },
+  "manuscript_figure_path": "figs/nyc-case-study.pdf (not present in source tree)",
+  "manuscript_section": "PACE.tex lines 2727-2832; figure label fig:nyc_case_study",
+  "plot_geometry_counts": {
+    "background_segments": 11108,
+    "fastest_segments": 68,
+    "path_segments": [
+      61,
+      113,
+      115,
+      110,
+      109
+    ]
+  },
+  "query_id": "NYC-Q012-MORNING-R20",
+  "schema_version": "nyc-case-study-provenance-v1",
+  "source_repository": "I-PC-Max (source checkout; source paths are repository-relative)",
+  "source_sha256": {
+    "geodata_parquet": "f2052239823c7fee60cc4eeaa8a96156583b23468d45a4b7f30e6bbf57dc52ec",
+    "graph_manifest": "181a7946fe547f3052e25e606206d98a647de9c9a4d03a13f880b5319493c48e",
+    "historical_v2_runner_jar": "3d73adce5bea68f1248e807627a42f075d8a1a864fe3437b9031a0508e0963e1",
+    "original_figure_pdf": "d6f786518548d98af7e3503ab0f1a8792d59fd4bc53b99645e73ca6ec1c89cb0",
+    "original_figure_png": "ed3aa6b8ae0db6a824ec830f5b7d4d54bc748fe9fdf6b103ae048d52e913c7e0",
+    "query_jsonl_full": "298889e8d22e7567b7a399b9009ddff0364b6945141336226b2bd0e5a149def4",
+    "query_line": "f0f06354fc1a1143d63b3676d227573ae36e49e1507c7caa08853bf5f49d7b1f",
+    "renderer": "fd713e05f90a3c2bb534d563aa0d4c7d664b9308f5244d4b4ea81c60f0feeeb1",
+    "result_jsonl_full": "1026fecb511254b3310796d7a08caa6e53d64bce026bd777b48007e1b2945bc2",
+    "result_line": "9d78e691a1143994954464d6f1bf6e1eb24286839f153f6f8721fe87a95638a4",
+    "validation_jsonl_full": "d2fc16c69f96a96eb6f01d65c088dea3e5b082883f17549458e3a359e294a0a1",
+    "validation_line": "5aaf5f1a8241d85235baebd8a8381d3b8385f1acff0e05bfac809058b022acaa"
+  },
+  "validation_checks": [
+    "selected query, result, and validation records are unique",
+    "corrected final checksum and path hashes match the source renderer registry",
+    "selected cells exactly cover all 121 departures",
+    "all selected story points match cell paths and scores",
+    "selected per-cell mean travel times match the validation points",
+    "all selected story points are marked valid and result reports zero budget violations",
+    "interval-best 07:53 point agrees with story",
+    "source and destination vertices agree with first mapped route geometry"
+  ]
+}

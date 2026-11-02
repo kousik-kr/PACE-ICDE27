@@ -1,0 +1,94 @@
+{
+  "case_id": "NYC-REAL-V2",
+  "case_study_schema_version": 1,
+  "conversion_contract": {
+    "contract_id": "declared_centisecond_normalization-v1",
+    "formula": "minutes = DIMACS_weight * 1 / 6000",
+    "input_weight_unit": "declared_centisecond_normalization",
+    "internal_time_unit": "minutes",
+    "minutes_per_dimacs_weight": {
+      "denominator": 6000,
+      "numerator": 1
+    },
+    "provenance": "author release decision for this paper artifact. DIMACS documentation says transit weights are arbitrary, so this is a declared experimental normalization, not an official DIMACS physical-unit claim.",
+    "rounding_policy": "exact rational arithmetic internally where possible; deterministic decimal serialization with up to 9 digits after decimal, trimming trailing zeros"
+  },
+  "mta_gtfs_download_manifest_sha256": "007fd20fb279832f2e1e7273ff08a3a5f581d283210bbddd91a333e1774896d8",
+  "mta_gtfs_shape_inventory_sha256": "231cd33630b924390de1e09f33446ecfbe5ee3cd35e501577a48ed1b0e771f76",
+  "num_arcs": 733846,
+  "num_nodes": 264346,
+  "output_files": [
+    "nodes.csv.gz",
+    "edges_static.csv.gz",
+    "travel_time_functions.jsonl.gz",
+    "travel_time_provenance.jsonl.gz",
+    "manifest.json",
+    "score_functions.jsonl.gz"
+  ],
+  "pace_revision": "035966b188c7e889cd206ccf87620cec36f1b4cb",
+  "parent_case_id": "NYC-REAL",
+  "parent_graph_manifest_sha256": "ea9119b12ab2fdd1ebc4b3845bf70518b43d2ad414786a642752b089fee68c8b",
+  "schema_version": 3,
+  "score_definition": {
+    "active_route_ids": 367,
+    "active_route_shape_bin_exact_match_percent": 58.953944407535204,
+    "active_route_shape_bin_exact_matches": 55017,
+    "active_shape_ids": 4253,
+    "bin_minutes": 15,
+    "cap": 15,
+    "count_unit": "route_id",
+    "exact_shape_geometries_available": 1421,
+    "exact_shape_geometries_mapped_to_dimacs": 1418,
+    "formula": "sigma_e(t)=min(15, count(distinct active route_id using e in bin t))",
+    "mapped_active_route_ids": 345,
+    "name": "active transit-corridor affinity",
+    "route_geometry_fallback_count": 0,
+    "score_bearing_edges": 24655,
+    "score_breakpoints": 107157,
+    "service_day_filter": "exact local dates overlapping captured DOT horizon",
+    "shape_geometry_contract": "EXACT_SHAPE_ID_TO_GTFS_SHAPES_TXT_ONLY",
+    "unmatched_active_shapes": 2835
+  },
+  "score_functions_sha256": "20fe006c1c5b75627b36dc9882c81f789f2311cdb275261c5d69f41632a24c5c",
+  "seed": 20260815,
+  "selected_score_edge_count": 24655,
+  "source_graph": "/home/koushik/Kousik/I-PC-Max/data/input/NY",
+  "source_graph_manifest_sha256": "b15d1433609e3a44fdb44c1bfb6c282c700057c17010b8e0655844b429fd44d9",
+  "temporal_support": {
+    "end": 1440,
+    "extension_policy": "none; exact longest contiguous observed DOT-bin horizon",
+    "observed_end_utc": "2026-05-15T04:00:00Z",
+    "observed_start_utc": "2026-05-14T04:00:00Z",
+    "start": 0
+  },
+  "traffic_calibration": {
+    "bin_minutes": 15,
+    "contiguous_bin_count": 96,
+    "fifo_repair_policy": "cumulative maximum of sampled arrivals; piecewise-linear interpolation",
+    "fifo_repaired_knots": 4,
+    "invalid_observations_rejected": 26751,
+    "no_day_wrapping": true,
+    "no_extrapolation": true,
+    "normalization_timezone": "UTC",
+    "provenance_counts": {
+      "BOROUGH_CLASS_IMPUTED": 7567514,
+      "CITYWIDE_IMPUTED": 62659235,
+      "DIRECT": 222467,
+      "STATIC_FALLBACK": 0
+    },
+    "source_timestamp_type": "Socrata Floating Timestamp",
+    "source_timezone": "America/New_York"
+  },
+  "travel_data_byte_identity": {
+    "edges_static.csv.gz": "bd79667e6d6a098d59dabf40b20b91bfb19bb18f1ae79aac17a481e1b689db8d",
+    "nodes.csv.gz": "9f0e594f2721ba1283e0882c3fbd0f71c0288c94904f51242b4d595860b785be",
+    "travel_time_functions.jsonl.gz": "6282ce5acf5cf46506cdc0b404a06fa1b5e54ce55ec542174b03b52f1802d8cc",
+    "travel_time_provenance.jsonl.gz": "f84dc8cd118fba5d77a6b9ce8f57084884eea43c83cb38af6b26b0d5ee5c1058"
+  },
+  "unlisted_edges_have_score_zero": true,
+  "v2_repair_scope": [
+    "CONNECTOR_FIX",
+    "MTA_SHAPE_COMPLETENESS",
+    "STATUS_ONLY"
+  ]
+}

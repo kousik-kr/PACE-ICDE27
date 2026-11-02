@@ -1,0 +1,36 @@
+{
+  "bounded_parameters": {
+    "Kf": 16,
+    "L": 32,
+    "Mb": 1000000,
+    "theta": 2
+  },
+  "budget_definition": "B=(1+rho)*max_I(T_fast(t))",
+  "case_study_role": "qualitative diagnostic; excluded from five-second scalability statistics",
+  "dataset_id": "NYC-REAL-V2",
+  "date": "2026-05-14",
+  "departure_interval_minutes": [
+    420,
+    540
+  ],
+  "destination": 151351,
+  "execution_protocol": {
+    "baseline_threads": 8,
+    "connector_selection": "EXACT_FIFO_AT_CONNECTED_CELL_MIDPOINT_ONE_STRUCTURE_V2",
+    "legacy_connector_and_query_work_caps": "UNBOUNDED_NOT_STOPPING_CRITERIA",
+    "legacy_connector_cache_enabled": false,
+    "legacy_connector_portfolio_enabled": false,
+    "run_role": "DIAGNOSTIC",
+    "threads": 1,
+    "timeout_seconds": 30
+  },
+  "fixed_budget_minutes": 8.382654224124,
+  "graph_manifest_sha256": "181a7946fe547f3052e25e606206d98a647de9c9a4d03a13f880b5319493c48e",
+  "local_clock": "07:00-09:00 America/New_York",
+  "query_id": "NYC-Q012-MORNING-R20",
+  "rho": 0.2,
+  "schema_version": "nyc-case-study-config-v1",
+  "score_definition": "sigma_e(t)=min(15,N_e(t)); N_e(t) counts distinct active MTA route_id values whose exact mapped GTFS shape uses directed road edge e in a 15-minute time bin",
+  "source": 146634,
+  "timezone": "America/New_York"
+}

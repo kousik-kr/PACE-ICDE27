@@ -1,0 +1,10 @@
+{
+  "schema": "pace-prepared-index-v1",
+  "method": "indexed THop BTHP-v2/PTHP-v4",
+  "dataset": "NY-CTRL",
+  "graph_semantic_checksum": "1f83a9e18b7c3475ab617df32f7df57189375dfebd78087ca82c84a1a36871ca",
+  "boundary_index_sha256": "f2a4d9a6f8e5cb7a78e6049c8219e96e488c8734e21f69be9fa803857f7db8d6",
+  "inner_index_sha256": "ac2dc58e82cbcdbde75ba71a03b140594d6ba93c224959405a96cd9a42bfa666",
+  "partitions_sha256": "09365193e9064bb5550dadd70afe0468a38804262b4c72be4298a53aee805edf",
+  "source": "I-PC-Max-thop-dev/experiments/results/icde2027_thop_final_execution_v1/experiment_a/index"
+}

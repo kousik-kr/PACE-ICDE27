@@ -1,0 +1,37 @@
+# Maven and Java
+/target/
+/modules/*/target/
+*.class
+*.hprof
+hs_err_pid*
+replay_pid*
+
+# Generated query runs and transient logs; keep verified case-study assets.
+/results/
+/logs/
+/tmp/
+/work/
+
+# Downloaded large road-network payloads and generated indexes.
+/data/NY/
+/data/FLA/
+/data/CAL/
+/data/USA/
+/data/downloads/
+/indexes/
+/cache/
+/prepared/downloaded/
+/prepared/generated/
+
+# Local Python and editor state.
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.idea/
+.vscode/
+.DS_Store
+
+# Do not ignore data/NY-Exact-radius/, queries/, prepared/NY-CTRL/,
+# provenance/, or case_study/NYC/ verified publication assets.

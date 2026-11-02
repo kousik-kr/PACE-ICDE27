@@ -1,0 +1,35 @@
+package edu.ipcmax.baselines.sicsp;
+
+/** Research counters and phase measurements for one SICSP-Pref query. */
+public record SicspPrefStatistics(
+        long edgesConsidered,
+        long candidateGenerationNanos,
+        long candidateAdaptationNanos,
+        long forwardSearchCalls,
+        long reverseSearchCalls,
+        long oTemporalEvents,
+        long wTemporalEvents,
+        long duplicateCandidateEvents,
+        long rawOPoints,
+        long rawWPoints,
+        long candidatesRemovedByDominance,
+        long nonSimpleEventCandidatesRejected,
+        long distinctNonSimpleRoutesRejected,
+        long rawCandidateRoutes,
+        long simpleCandidateRoutes,
+        long outOfQueryCandidateRoutes,
+        long retainedDistinctCandidates,
+        long candidatesWithNonemptyFeasibleDomains,
+        long candidatesWithEmptyFeasibleDomains,
+        long profileReplayNanos,
+        long envelopeConstructionNanos,
+        long queryExecutionNanos,
+        long profileCellCount,
+        long feasibleProfileCellCount,
+        long sampledHeapBytes,
+        double feasibleCoverage,
+        double integratedPreferenceScore,
+        double minimumSelectedTravelTime,
+        double averageSelectedTravelTime,
+        double maximumSelectedTravelTime) {
+}

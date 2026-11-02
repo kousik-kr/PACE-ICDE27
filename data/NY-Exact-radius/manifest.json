@@ -1,0 +1,102 @@
+{
+  "conversion_contract": {
+    "contract_id": "declared_centisecond_normalization-v1",
+    "formula": "minutes = DIMACS_weight * 1 / 6000",
+    "input_weight_unit": "declared_centisecond_normalization",
+    "internal_time_unit": "minutes",
+    "minutes_per_dimacs_weight": {
+      "denominator": 6000,
+      "numerator": 1
+    },
+    "provenance": "author release decision for this paper artifact. DIMACS documentation says transit weights are arbitrary, so this is a declared experimental normalization, not an official DIMACS physical-unit claim.",
+    "rounding_policy": "exact rational arithmetic internally where possible; deterministic decimal serialization with up to 9 digits after decimal, trimming trailing zeros"
+  },
+  "dataset_checksum": "ab3014b15e4c2ebbdac2304dfaf6b1eb69d2861d53f84b279c6247473aa50995",
+  "derived_from": "NY",
+  "generator": {
+    "generation_config_sha256": "405c008b3cd8507c348782f9a6a8160bae6a5c5773321d7ffabdd259a53933f1",
+    "name": "experiments/scripts/generate_dataset_assets.py",
+    "version": "pace-dataset-assets-v2"
+  },
+  "induced_subgraph": {
+    "directed_arc_id_policy": "deterministic-remap-in-source-arc-order",
+    "node_id_policy": "deterministic-positive-remap-in-source-node-order",
+    "radius_minutes": 4.5,
+    "selected_nodes": 64,
+    "selection": "deterministic_source_centered_static_radius",
+    "source_dataset_checksum": "97999bd124ed9639234bc1a9334b0426911a234b1ed80b5093ec1b30a8ade675",
+    "source_node": 1,
+    "source_temporal_attribute_checksum": "d13b5d1080e9520a82df780831265e63bbfe6a518db73d793b3f5ae4d8d548f3",
+    "target_nodes": 10000
+  },
+  "input_files": {
+    "coords": "/home/koushik/Kousik/I-PC-Max/../Synthetic-data-generator/datasets/NY/USA-road-d.NY.co",
+    "distance": "/home/koushik/Kousik/I-PC-Max/../Synthetic-data-generator/datasets/NY/USA-road-d.NY.gr",
+    "travel_time": "/home/koushik/Kousik/I-PC-Max/../Synthetic-data-generator/datasets/NY/USA-road-t.NY.gr"
+  },
+  "input_sha256": {
+    "coords": "c39ec9b87c66d6e254f80cd3cfe20c7eb3c5ce4aca4063dc2efc228ab12fa95f",
+    "distance": "37f5b3eff82330850466956b6c036a8ab8551512bdc7509edca1d4c6cf943fa3",
+    "travel_time": "948377c7f0a974bdb0a9be76fd5b7ceff95bb78c2a011fa6661bde2f2f06f732"
+  },
+  "materialize_zero_score_edges": false,
+  "multiplier_ranges": {
+    "evening": [
+      1.15,
+      2.5
+    ],
+    "morning": [
+      1.1,
+      2.0
+    ]
+  },
+  "num_arcs": 142,
+  "num_nodes": 64,
+  "output_files": [
+    "nodes.csv.gz",
+    "edges_static.csv.gz",
+    "travel_time_functions.jsonl.gz",
+    "score_functions.jsonl.gz",
+    "manifest.json",
+    "README_generated.md"
+  ],
+  "rush_windows": {
+    "evening": [
+      1020,
+      1200
+    ],
+    "morning": [
+      420,
+      600
+    ]
+  },
+  "schema_version": 3,
+  "score_edge_fraction": 0.2323943661971831,
+  "score_intervals_per_rush": 3,
+  "score_max": 15,
+  "score_min": 1,
+  "score_output": {
+    "file": "score_functions.jsonl.gz",
+    "format": "gzip-compressed JSON Lines; each object contains an arc_id and piecewise-constant score_intervals as [start_minute, end_minute, score]; scores are zero from 1440 through 10080"
+  },
+  "seed": 42,
+  "selected_score_edge_count": 33,
+  "temporal_attribute_checksum": "fc0924f7bf8f771ba9248d8a9a0eeee653903434cad23b1b5d43bfc66685a569",
+  "temporal_support": {
+    "end": 10080,
+    "extension_policy": "preserve first-day rush-window behavior over [0,1440]; extend travel time flat from 1440 to 10080 using the converted static travel time; extend score as zero over [1440,10080]; no periodic repetition; no query-time extrapolation",
+    "first_day_end": 1440,
+    "start": 0
+  },
+  "travel_time_output": {
+    "file": "travel_time_functions.jsonl.gz",
+    "format": "gzip-compressed JSON Lines; one object per arc; travel_time_breakpoints contains [minute, travel_time] points from 0 through 10080; minutes use declared DIMACS_weight/6000 normalization; values from 1440 through 10080 equal converted base_travel_time",
+    "integer_travel_times": false,
+    "temporal_support": {
+      "end": 10080,
+      "start": 0
+    },
+    "travel_time_decimals": 9
+  },
+  "unlisted_edges_have_score_zero": true
+}
