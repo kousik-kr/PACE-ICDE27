@@ -32,6 +32,8 @@ A single frozen NY-CTRL query (`NY-FINAL-NY-FINAL-P001-C510-B005`) ran through e
 | `iscope` | `CERTIFIED_COMPLETE` | yes |
 | `thop` | `ACCEPTED` | yes; indexed BTHP-v2/PTHP-v4 artifacts loaded and independent fastest-path samples matched |
 
+A separate audit of the smoke JSON walked each selected PACE-X, PACE-B, ICSP, and iSCOPE arc list against the bundled graph and confirmed source-to-destination continuity. It evaluated each reported exact affine travel-time function at both cell endpoints and found every budget-feasible selected cell within the frozen budget. The additional indexed THop witness arc list also connects the frozen source and destination.
+
 The all-query command was exercised with a one-row canonical query-root override; its PACE-B output matched the single-query result's schema, query payload, native status, exact preference summary, and profile checksum `89dfb6b22b1ed572fd6065b2b42a7c2b44ba8194b4bbe32c16edd07c310c4a0b`. This checked the full-run path without launching all 60 experimental queries.
 
 An additional indexed THop query (`NY-FINAL-NY-FINAL-P008-C1110-B010`) produced nonzero exact post-evaluated preference. Its indexed travel profile hash, routes, preference cells, and travel-time pieces matched the original frozen Experiment A raw record; all 12 independent fastest-arrival samples matched. The adapter keeps `certified=false` because sampled checks are not a formal global optimality certificate.
