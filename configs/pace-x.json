@@ -31,5 +31,6 @@
     "--deterministic",
     "--shared-preprocessing"
   ],
-  "provenance": "Historical FINAL_EXACT_NY_V1 raw configuration; original executable SHA unavailable; public R22 source contains PACE-X entry point."
+  "provenance": "Historical FINAL_EXACT_NY_V1 raw configuration; original executable SHA unavailable; public R22 source contains PACE-X entry point.",
+  "jvm_heap_provenance": "PUBLIC_ADAPTER_TRANSLATION_FROM_RECORDED_MEMORY_LIMIT_MB_256000; ORIGINAL_JVM_XMX_UNRECORDED"
 }
