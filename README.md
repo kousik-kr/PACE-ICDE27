@@ -55,7 +55,7 @@ Experiment A's 60 NY-CTRL queries and Experiment B's 50 queries each for NY, FLA
 
 Large network payloads are **not** bundled or downloaded automatically. They are available from the project's Google Drive folder:
 
-**[Road-network datasets (Google Drive)](https://drive.google.com/drive/folders/1ukHbqyAsDzNk76fiziH4HeHLSd9VKOjr?usp=drive_link)**
+**[Road-network datasets (Google Drive)](https://drive.google.com/drive/folders/1ukHbqyAsDzNk76fiziH4HeHLSd9VKOjr?usp=sharing)**
 
 | Dataset | Required extracted directory |
 | --- | --- |
