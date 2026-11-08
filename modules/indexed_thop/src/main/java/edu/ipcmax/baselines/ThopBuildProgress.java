@@ -4,7 +4,7 @@ import java.lang.management.ManagementFactory;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-/** Optional low-overhead construction diagnostics, enabled only by R24 builds. */
+/** Optional low-overhead construction diagnostics, enabled only through the {@code ipcmax.thop.progress} system property. */
 final class ThopBuildProgress {
     static final boolean ENABLED = Boolean.getBoolean("ipcmax.thop.progress");
     private static final long INTERVAL_NANOS = Math.max(1L,

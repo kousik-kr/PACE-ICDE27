@@ -4,7 +4,7 @@ Each `queries/<dataset>/queries.jsonl` is a byte-for-byte copy of a frozen exper
 
 | Public selector | Rows | SHA-256 of `queries.jsonl` | Frozen source family |
 | --- | ---: | --- | --- |
-| `NY-CTRL` | 60 | `88151afc2d77e69e510cd66c54383fb5cfc3fa3608e50834cdadb60e3d03a990` | R24 `q_input_frozen.jsonl` |
+| `NY-CTRL` | 60 | `88151afc2d77e69e510cd66c54383fb5cfc3fa3608e50834cdadb60e3d03a990` | `q_input_frozen.jsonl` |
 | `NY` | 50 | `ca081e68a239e53fe2a4ddee8851dc873bcef4b0d81ae40c4019b955394cb7a6` | `icde2027_oneday_verified_v3` |
 | `FLA` | 50 | `29ef21c5d8cf649ea2115aac4db212e3b73e33141daa6f30d3a5253e1ab81e50` | `icde2027_oneday_verified_v3` |
 | `CAL` | 50 | `da24ed9ba88542bd90221485291b68b4df0d63b72a632da4c4c0053f857ce2eb` | `icde2027_oneday_verified_v3` |

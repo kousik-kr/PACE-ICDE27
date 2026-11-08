@@ -227,7 +227,7 @@ public final class ThopLargeScaleProfile {
         b0 = System.nanoTime();
         GraphPartitionMetadata metadata = GraphPartitionMetadata.fromAssignments(graph, assignment);
         long metadataNanos = System.nanoTime() - b0;
-        b.put("algorithm", "R23 deterministic recursive spatial median bisection (x/y alternate, ties by other coordinate then vertex id), depth=" + config.partitionDepth());
+        b.put("algorithm", "Deterministic recursive spatial median bisection (x/y alternate, ties by other coordinate then vertex id), depth=" + config.partitionDepth());
         b.put("depth", config.partitionDepth());
         b.put("assignment_nanos", assignNanos);
         b.put("metadata_nanos", metadataNanos);

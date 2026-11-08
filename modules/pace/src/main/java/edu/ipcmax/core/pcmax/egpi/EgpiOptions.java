@@ -40,7 +40,7 @@ public record EgpiOptions(
         }
     }
 
-    /** Ten-field form used by the R21 command-line surface; scheduling fields take defaults. */
+    /** Ten-field form used by the reference command-line surface; scheduling fields take defaults. */
     public EgpiOptions(int maxProposalPops, int maxConnectorSearches,
             int maxExactRouteEvaluations, int maxExpansionFrontierRoutes,
             int maxRegistryRoutes, int maxPivotsPerConstructedRoute,

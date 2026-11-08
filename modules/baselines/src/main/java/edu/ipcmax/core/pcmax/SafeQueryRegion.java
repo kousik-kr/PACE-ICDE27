@@ -21,7 +21,7 @@ import edu.ipcmax.core.index.QueryPreparationIndexes;
  * iff {@code d(s,x)+tau_lb(e)+d(y,d)<=B}), and validation that every corridor
  * function covers the query horizon. No route is excluded by any heuristic
  * here. The legacy generator keeps its own inline copy so that frozen PACE-X
- * and R13 executions are byte-for-byte unchanged.</p>
+ * and legacy PACE-B executions are byte-for-byte unchanged.</p>
  */
 public final class SafeQueryRegion {
     private final TDGraph graph;

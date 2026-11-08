@@ -32,7 +32,7 @@ class EgpiBalancedReplayEquivalenceTest {
     @AfterEach
     void restoreDefaults() {
         ExactReplayEngine.configure(ExactReplayEngine.Mode.SEQUENTIAL_V1, 8, 16);
-        ExactKernel.configure(ExactKernel.Mode.R21);
+        ExactKernel.configure(ExactKernel.Mode.JDK);
     }
 
     private static ExactTemporalDomain closed(double start, double end) {
@@ -180,10 +180,10 @@ class EgpiBalancedReplayEquivalenceTest {
             TDGraph graph = EgpiFixtures.chain(arcs, 5000 + c);
             ExactTemporalDomain entry = randomDeparture(random, 0, 800);
             ExactReplayEngine.configure(ExactReplayEngine.Mode.SEQUENTIAL_V1, 8, 16);
-            ExactKernel.configure(ExactKernel.Mode.R21);
+            ExactKernel.configure(ExactKernel.Mode.JDK);
             ExactPreferenceTransferProfile expected = transfer(graph, arcs, entry);
             ExactReplayEngine.configure(ExactReplayEngine.Mode.BALANCED_V1, 4, 16);
-            ExactKernel.configure(ExactKernel.Mode.R22);
+            ExactKernel.configure(ExactKernel.Mode.LEHMER);
             assertSameTransfer(expected, transfer(graph, arcs, entry), "case " + c);
         }
     }

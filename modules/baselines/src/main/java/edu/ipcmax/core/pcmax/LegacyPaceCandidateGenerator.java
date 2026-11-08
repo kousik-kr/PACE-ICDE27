@@ -2,7 +2,7 @@ package edu.ipcmax.core.pcmax;
 
 import java.util.Objects;
 
-/** Versioned facade preserving the existing PACE-X and R13 bounded engines. */
+/** Versioned facade preserving the existing PACE-X and legacy PACE-B bounded engines. */
 public final class LegacyPaceCandidateGenerator
         implements VersionedCandidateGenerator<PaceGenerationResult> {
     private final PACE pace;

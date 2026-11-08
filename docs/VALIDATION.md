@@ -5,10 +5,10 @@ This report covers the local publication package at `/home/koushik/Kousik/PACE-I
 ## Build and tests
 
 - `mvn -q package` succeeded from the publication directory using Java 21 and Maven 3.6.3.
-- R22 module: 40 JUnit tests passed, 0 failures/errors/skips.
-- R24 baseline module: 31 JUnit tests passed, 0 failures/errors/skips.
+- PACE module: 40 JUnit tests passed, 0 failures/errors/skips.
+- Baselines module: 31 JUnit tests passed, 0 failures/errors/skips.
 - Indexed THop module: 18 JUnit tests passed, 0 failures/errors/skips.
-- The extracted compiled production classes matched the corresponding frozen experiment JAR classes byte for byte: R22 474/474, R24 471/471, indexed THop 505/505. This is a class identity check, not a claim that the newly shaded JAR bytes equal the historic JAR bytes.
+- The extracted compiled production classes matched the corresponding frozen experiment JAR classes byte for byte: PACE module 474/474, baselines 471/471, indexed THop 505/505. This is a class identity check, not a claim that the newly shaded JAR bytes equal the historic JAR bytes.
 
 ## Input and portability checks
 
@@ -27,7 +27,7 @@ A single frozen NY-CTRL query (`NY-FINAL-NY-FINAL-P001-C510-B005`) ran through e
 | Selector | Native status | Validated result |
 | --- | --- | --- |
 | `pace-x` | `COMPLETED` | yes; historical exactness caveat remains |
-| `pace-b` | `COMPLETED` | yes; native config confirmed `egpi_engine_profile=r22`, exact kernel R22 and balanced replay |
+| `pace-b` | `COMPLETED` | yes; native config confirmed the anytime EGPI engine profile, the Lehmer exact kernel and balanced replay |
 | `icsp` | `COMPLETED` | yes |
 | `iscope` | `CERTIFIED_COMPLETE` | yes |
 | `thop` | `ACCEPTED` | yes; indexed BTHP-v2/PTHP-v4 artifacts loaded and independent fastest-path samples matched |
@@ -40,10 +40,19 @@ An additional indexed THop query (`NY-FINAL-NY-FINAL-P008-C1110-B010`) produced 
 
 The NYC plotter ran using only the packaged case-study files and Matplotlib. It generated PDF, PNG, and SVG; the regenerated PNG SHA-256 was byte-identical to the manuscript-matching archived PNG (`ed3aa6b8ae0db6a824ec830f5b7d4d54bc748fe9fdf6b103ae048d52e913c7e0`).
 
+## Re-verification after development-label removal — 2026-11-08
+
+Internal development-round labels were removed from identifiers, comments, configuration values, and metadata strings. Afterwards:
+
+- `mvn -o package` succeeded with the same test counts as above: 40, 31, and 18 JUnit tests passed, with no failures, errors, or skips.
+- `sha256sum --check checksums.sha256` and `sha256sum --check provenance/source_hashes.sha256` passed. The source hash list was regenerated for the 49 modified Java files.
+- A single frozen NY-CTRL query (`NY-FINAL-NY-FINAL-P001-C510-B005`) ran through `pace-b` (`COMPLETED`, validated) and `thop` (`ACCEPTED`, validated). The `pace-b` profile checksum was again `89dfb6b22b1ed572fd6065b2b42a7c2b44ba8194b4bbe32c16edd07c310c4a0b`, identical to the earlier run. The native output records the `ANYTIME_V1` engine profile, the `LEHMER` exact kernel, and `BALANCED_V1` replay.
+- The renamed classes are no longer byte-identical to the archived JARs, so the class-identity result above applies to the original extraction only.
+
 ## Limits before public release
 
 - Historical PACE-X outputs remain uncertified, and their historical executable SHA-256 was not recorded.
 - Indexed THop is verified on NY-CTRL. Compatible indexes and validated large-network indexed execution are not included for NY, FLA, CAL, or USA.
-- Large-network data and author-supplied Google Drive URLs remain external/pending.
+- Large-network data is hosted externally in the project Google Drive folder and is not bundled; this validation did not download or exercise it.
 - Source, adapted baseline, dataset, and case-study redistribution permissions require author review; no license grant is inferred.
 - The historical NYC V2 algorithm rerun needs its external graph and separate V2 runner. The included figure regeneration does not need either.

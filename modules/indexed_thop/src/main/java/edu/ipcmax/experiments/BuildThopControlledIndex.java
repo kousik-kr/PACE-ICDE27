@@ -47,7 +47,7 @@ public final class BuildThopControlledIndex {
         Domain indexDomain = Domain.closed(0.0, 10080.0);
         Path boundaryFile = indexDir.resolve("boundary.bthp");
         Path innerFile = indexDir.resolve("inner.pthp");
-        if (Files.exists(innerFile)) throw new IllegalStateException("refusing to overwrite an existing R23 inner index");
+        if (Files.exists(innerFile)) throw new IllegalStateException("refusing to overwrite an existing controlled inner index");
 
         long loadStarted = System.nanoTime();
         String graphChecksum = PaceBench.graphSemanticChecksum(graph);
@@ -62,7 +62,7 @@ public final class BuildThopControlledIndex {
             boundaryLoadNanos = System.nanoTime() - boundaryLoadStarted;
             if (!boundary.partitionMetadata().partitionByVertex().equals(metadata.partitionByVertex())
                     || !boundary.indexDomain().equals(indexDomain)) {
-                throw new IllegalStateException("existing R23 boundary index does not match graph/partition/domain");
+                throw new IllegalStateException("existing controlled boundary index does not match graph/partition/domain");
             }
             boundaryBuildNanos = boundary.constructionStatistics().constructionWallNanos();
         } else {
@@ -83,7 +83,7 @@ public final class BuildThopControlledIndex {
 
         PartitionedTHopIndex.ConstructionStatistics stats = reloaded.constructionStatistics();
         Map<String, Object> output = new LinkedHashMap<>();
-        output.put("schema", "m5-r24-thop-controlled-index-build-v1");
+        output.put("schema", "thop-controlled-index-build-v1");
         output.put("query_count", 0);
         output.put("dataset_id", "NY-Exact-radius");
         output.put("graph_semantic_checksum", graphChecksum);

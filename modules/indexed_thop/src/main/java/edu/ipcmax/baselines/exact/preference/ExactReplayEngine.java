@@ -6,10 +6,10 @@ import java.util.Locale;
  * Selects how a complete path's exact transfer is built. Both engines produce the same exact
  * piecewise functions; they differ in the order of the composition and in how much work is shared.
  *
- * <p>{@code SEQUENTIAL_V1} is the M5-R21 edge-by-edge replay. {@code BALANCED_V1} composes
+ * <p>{@code SEQUENTIAL_V1} is the reference edge-by-edge replay. {@code BALANCED_V1} composes
  * {@code leafEdges}-edge segments, each replayed on a conservative exact entry band, pairwise in a
  * balanced tree; see {@link ExactBalancedReplay}. The selection is process wide so that runs of one
- * executable can be compared; the default is the R21 engine.</p>
+ * executable can be compared; the default is the sequential engine.</p>
  */
 public final class ExactReplayEngine {
     public enum Mode { SEQUENTIAL_V1, BALANCED_V1 }
@@ -35,8 +35,8 @@ public final class ExactReplayEngine {
 
     public static Mode parse(String name) {
         return switch (name.trim().toLowerCase(Locale.ROOT)) {
-            case "sequential", "sequential_v1", "r21" -> Mode.SEQUENTIAL_V1;
-            case "balanced", "balanced_v1", "r22" -> Mode.BALANCED_V1;
+            case "sequential", "sequential_v1" -> Mode.SEQUENTIAL_V1;
+            case "balanced", "balanced_v1" -> Mode.BALANCED_V1;
             default -> throw new IllegalArgumentException("unknown exact replay engine: " + name);
         };
     }

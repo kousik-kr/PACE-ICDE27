@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Deterministic recursive spatial-median bisection, the partitioning of the R23 controlled THop index, for graphs of any size.
+ * Deterministic recursive spatial-median bisection, the partitioning of the controlled THop index, for graphs of any size.
  *
  * <p>x and y alternate starting with x; at every level the vertices are ordered by (primary coordinate, other coordinate, vertex id) and split at
  * position {@code size/2}, the lower half taking the lower partition ids. Depth d gives 2^d partitions numbered in recursion order. The split needs only

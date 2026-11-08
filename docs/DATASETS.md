@@ -2,7 +2,7 @@
 
 ## Bundled NY-CTRL network
 
-`data/NY-Exact-radius/` is the complete controlled network used for Experiment A. The public dataset selector `NY-CTRL` maps to this directory; its frozen query rows retain the internal `dataset_id` `NY-Exact-radius`. The six distributed files are byte-for-byte copies of the authoritative controlled payload, which was also identical to the frozen R24 input copy.
+`data/NY-Exact-radius/` is the complete controlled network used for Experiment A. The public dataset selector `NY-CTRL` maps to this directory; its frozen query rows retain the internal `dataset_id` `NY-Exact-radius`. The six distributed files are byte-for-byte copies of the authoritative controlled payload, which was also identical to the frozen input copy.
 
 | Property | Recorded value |
 | --- | --- |
@@ -29,6 +29,6 @@ The full NY, FLA, CAL, and USA road networks are not distributed here. Put each 
   USA/
 ```
 
-Each directory must contain the same graph, temporal, preference, and manifest files expected by the loader. Download links remain placeholders in the top-level README until the authors provide them. The frozen query files are small and included in `queries/`.
+Each directory must contain the same graph, temporal, preference, and manifest files expected by the loader. All four datasets are available from the [project Google Drive folder](https://drive.google.com/drive/folders/1ukHbqyAsDzNk76fiziH4HeHLSd9VKOjr?usp=drive_link); download them and place each directory under the data root as shown above. The frozen query files are small and included in `queries/`.
 
 The source repository contains no top-level software license or distribution notice for this derived dataset. Confirm the upstream DIMACS redistribution terms and the project's release permissions before publishing the bundle.

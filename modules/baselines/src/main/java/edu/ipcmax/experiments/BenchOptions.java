@@ -239,11 +239,11 @@ final class BenchOptions {
      * requested keep the executable's defaults, so a run without these flags is unaffected.
      */
     void applyExactSelections() {
-        // The R22 EGPI profile bundles the R22 exact arithmetic; explicit flags override the bundle.
-        boolean r22Profile = algorithm != null && algorithm.equals("pace-b-egpi-v1")
-                && "r22".equalsIgnoreCase(objectiveOptions.getOrDefault("egpi_engine_profile", "r21"));
-        if (r22Profile && exactKernel == null) exactKernel = "r22";
-        if (r22Profile && exactReplayEngine == null) exactReplayEngine = "balanced";
+        // The anytime EGPI profile bundles the Lehmer exact arithmetic; explicit flags override the bundle.
+        boolean anytimeProfile = algorithm != null && algorithm.equals("pace-b-egpi-v1")
+                && "anytime".equalsIgnoreCase(objectiveOptions.getOrDefault("egpi_engine_profile", "reference"));
+        if (anytimeProfile && exactKernel == null) exactKernel = "lehmer";
+        if (anytimeProfile && exactReplayEngine == null) exactReplayEngine = "balanced";
         if (exactKernel != null) {
             edu.ipcmax.baselines.exact.ExactKernel.configure(edu.ipcmax.baselines.exact.ExactKernel.parse(exactKernel));
         }
@@ -516,7 +516,7 @@ final class BenchOptions {
     }
 
     private boolean isLegacyPaceB() {
-        return algorithm.equals("pace-b") || algorithm.equals("pace-b-legacy-r13");
+        return algorithm.equals("pace-b") || algorithm.equals("pace-b-legacy");
     }
 
     private static String value(List<String> tokens, int index, String option) {

@@ -9,10 +9,10 @@ This repository packages the final PACE-B EGPI implementation, the historical PA
 | Selector | Implementation | Objective and interpretation |
 | --- | --- | --- |
 | `pace-x` | Historical PACE-X reference | Preference-path reference; historical results have unresolved differences from independent exact replay and are **uncertified**. |
-| `pace-b` | Final R22 `R22_ANYTIME_V1` Envelope-Guided Pivot Insertion (EGPI) | Validated preference envelopes under the documented search/time cap; a capped result does not imply global optimality. |
-| `icsp` | R24 `SICSP-Pref` | ICSP-derived preference-maximization adaptation, preserving the experimental travel-budget and exact scoring contract. |
+| `pace-b` | Final `ANYTIME_V1` Envelope-Guided Pivot Insertion (EGPI) | Validated preference envelopes under the documented search/time cap; a capped result does not imply global optimality. |
+| `icsp` | `SICSP-Pref` | ICSP-derived preference-maximization adaptation, preserving the experimental travel-budget and exact scoring contract. |
 | `thop` | Final indexed THop, BTHP-v2/PTHP-v4 | Fastest travel-time path/profile. Preference is evaluated afterward on the returned path; it is not the search objective. |
-| `iscope` | R24 `iSCOPE-Profile` | Preference-oriented adaptation of the experimental iSCOPE baseline. |
+| `iscope` | `iSCOPE-Profile` | Preference-oriented adaptation of the experimental iSCOPE baseline. |
 
 The verified indexed THop artifact covers the bundled **NY-CTRL** network. Indexed operation on NY, FLA, CAL, or USA is not established by this package. The commands must not switch to an index-free solver to fill that gap.
 
@@ -53,16 +53,18 @@ Experiment A's 60 NY-CTRL queries and Experiment B's 50 queries each for NY, FLA
 
 ## Downloading the Large Road-Network Datasets
 
-Large network payloads are **not** bundled or downloaded automatically. The authors have not yet supplied public Google Drive URLs.
+Large network payloads are **not** bundled or downloaded automatically. They are available from the project's Google Drive folder:
 
-| Dataset | Google Drive link | Required extracted directory |
-| --- | --- | --- |
-| NY | To be provided | `NY/` |
-| FLA | To be provided | `FLA/` |
-| CAL | To be provided | `CAL/` |
-| USA | To be provided | `USA/` |
+**[Road-network datasets (Google Drive)](https://drive.google.com/drive/folders/1ukHbqyAsDzNk76fiziH4HeHLSd9VKOjr?usp=drive_link)**
 
-Put those directories under one external root, for example `/path/to/downloaded/datasets/NY/`, and pass that root with `--data-root`. Each directory must contain the graph, temporal, preference, and manifest payload expected by the loader. No source edit is needed. The frozen large-network **query files** remain in this repository.
+| Dataset | Required extracted directory |
+| --- | --- |
+| NY | `NY/` |
+| FLA | `FLA/` |
+| CAL | `CAL/` |
+| USA | `USA/` |
+
+Download the datasets from that folder and put the directories under one external root, for example `/path/to/downloaded/datasets/NY/`, and pass that root with `--data-root`. Each directory must contain the graph, temporal, preference, and manifest payload expected by the loader. No source edit is needed. The frozen large-network **query files** remain in this repository.
 
 ## Run every frozen query
 
@@ -111,7 +113,7 @@ The manuscript's historical campaigns used algorithm-specific deadlines, repeate
 
 ## NYC Case Study
 
-The [NYC case-study directory](case_study/NYC/README.md) preserves the actual `NYC-Q012-MORNING-R20` manuscript example, its validated diagnostic, and original figure. Its standalone plotter regenerates PDF, PNG, and SVG from included verified figure data without rerunning routing. The historical query uses a distinct `nyc-query-v2` schema and a V2 case-study runner; it cannot be passed directly to the two general query commands or presented as an R22 reproduction. A full historical rerun requires the external NYC-REAL-V2 graph and that runner. No complete NYC road network is bundled here.
+The [NYC case-study directory](case_study/NYC/README.md) preserves the actual manuscript example query, its validated diagnostic, and original figure. Its standalone plotter regenerates PDF, PNG, and SVG from included verified figure data without rerunning routing. The historical query uses a distinct `nyc-query-v2` schema and a V2 case-study runner; it cannot be passed directly to the two general query commands or presented as a PACE-B reproduction. A full historical rerun requires the external NYC-REAL-V2 graph and that runner. No complete NYC road network is bundled here.
 
 ## Citation
 

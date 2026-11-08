@@ -23,7 +23,7 @@ public final class AlgorithmRegistry {
     public static ExperimentAlgorithm create(String id) {
         String canonical = canonicalId(id);
         return switch (canonical) {
-            case "pace-x", "pace-b", "pace-b-legacy-r13" -> new PaceExperimentAlgorithm(canonical);
+            case "pace-x", "pace-b", "pace-b-legacy" -> new PaceExperimentAlgorithm(canonical);
             case "pace-b-egpi-v1" -> new EgpiExperimentAlgorithm();
             case "exh-profile" -> new ExhaustiveProfileAlgorithm();
             case "pl-exact" -> new ProfileLabelingAlgorithm();
@@ -45,7 +45,7 @@ public final class AlgorithmRegistry {
     public static String canonicalId(String id) {
         return switch (id) {
             case "PACE_X" -> "pace-x";
-            case "PACE_B_LEGACY_R13" -> "pace-b-legacy-r13";
+            case "PACE_B_LEGACY" -> "pace-b-legacy";
             case "PACE_B_EGPI_V1" -> "pace-b-egpi-v1";
             default -> id;
         };

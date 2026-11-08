@@ -173,8 +173,8 @@ public record AlgorithmConfig(
         if (algorithm.equals("pace-b-egpi-v1") || algorithm.equals("PACE_B_EGPI_V1")) {
             throw new IllegalStateException("EGPI uses EgpiOptions, not legacy PaceOptions");
         }
-        boolean bounded = algorithm.equals("pace-b") || algorithm.equals("pace-b-legacy-r13")
-                || algorithm.equals("PACE_B_LEGACY_R13");
+        boolean bounded = algorithm.equals("pace-b") || algorithm.equals("pace-b-legacy")
+                || algorithm.equals("PACE_B_LEGACY");
         if (!bounded) {
             return new PaceOptions(
                     PaceExecutionPolicy.PACE_X,

@@ -99,7 +99,7 @@ public final class ExactPreferenceReplay {
     }
 
     /**
-     * Edge-by-edge exact replay of an already validated path from {@code startVertex}: the R21
+     * Edge-by-edge exact replay of an already validated path from {@code startVertex}: the sequential
      * replay. With {@code cachedEdgeProfiles} the per-edge exact pieces come from the shared edge
      * cache instead of being rebuilt, which cannot change them.
      */

@@ -28,7 +28,7 @@ public final class ExactPreferenceProfileCodec {
         }
         out.append("],\"cells\":[");
         List<ExactPreferenceEnvelope.Cell> cells = envelope.cells();
-        if (ExactKernel.mode() == ExactKernel.Mode.R22 && cells.size() >= PARALLEL_MIN_CELLS) {
+        if (ExactKernel.mode() == ExactKernel.Mode.LEHMER && cells.size() >= PARALLEL_MIN_CELLS) {
             // Cells are independent text: converting a few hundred 8,800-bit coefficients is the dominant cost of
             // returning a long route's answer, and every core is idle when the search has stopped. The text is
             // the same as the sequential text below, cell for cell.

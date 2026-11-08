@@ -1,15 +1,15 @@
 package edu.ipcmax.core.pcmax;
 
-/** Explicit PACE family identities; historical pace-b continues to mean legacy R13. */
+/** Explicit PACE family identities; historical pace-b continues to mean the legacy PACE-B engine. */
 public enum PaceAlgorithmVersion {
     PACE_X,
-    PACE_B_LEGACY_R13,
+    PACE_B_LEGACY,
     PACE_B_EGPI_V1;
 
     /**
      * The PACE-B engine that new experiment manifests should name explicitly.
      * The bare {@code pace-b} selector is not redirected: frozen manifests that
-     * say {@code pace-b} keep running {@link #PACE_B_LEGACY_R13}.
+     * say {@code pace-b} keep running {@link #PACE_B_LEGACY}.
      */
     public static final PaceAlgorithmVersion INTENDED_PACE_B = PACE_B_EGPI_V1;
 
@@ -17,7 +17,7 @@ public enum PaceAlgorithmVersion {
     public String selector() {
         return switch (this) {
             case PACE_X -> "pace-x";
-            case PACE_B_LEGACY_R13 -> "pace-b-legacy-r13";
+            case PACE_B_LEGACY -> "pace-b-legacy";
             case PACE_B_EGPI_V1 -> "pace-b-egpi-v1";
         };
     }
@@ -25,7 +25,7 @@ public enum PaceAlgorithmVersion {
     public static PaceAlgorithmVersion fromSelector(String selector) {
         return switch (selector) {
             case "pace-x", "PACE_X" -> PACE_X;
-            case "pace-b", "pace-b-legacy-r13", "PACE_B_LEGACY_R13" -> PACE_B_LEGACY_R13;
+            case "pace-b", "pace-b-legacy", "PACE_B_LEGACY" -> PACE_B_LEGACY;
             case "pace-b-egpi-v1", "PACE_B_EGPI_V1" -> PACE_B_EGPI_V1;
             default -> throw new IllegalArgumentException("not a PACE algorithm selector: " + selector);
         };
@@ -34,7 +34,7 @@ public enum PaceAlgorithmVersion {
     public String candidateGenerationPolicy() {
         return switch (this) {
             case PACE_X -> "PACE_X_EXHAUSTIVE_FRONTIER";
-            case PACE_B_LEGACY_R13 -> "LEGACY_R13_BOUNDED_LAYERED_FRONTIER";
+            case PACE_B_LEGACY -> "LEGACY_BOUNDED_LAYERED_FRONTIER";
             case PACE_B_EGPI_V1 -> "ENVELOPE_GUIDED_COMPLETE_ROUTE_PIVOT_INSERTION_V1";
         };
     }

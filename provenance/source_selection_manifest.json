@@ -67,7 +67,7 @@
       "src/main/java/edu/ipcmax/experiments/querygen/QuerySetGenerator.java"
     ],
     "test_root_classes": [
-      "EgpiR22IntegrationTest",
+      "EgpiAnytimeIntegrationTest",
       "EgpiBalancedReplayEquivalenceTest",
       "EgpiCompletionAwareCommitTest",
       "EgpiExactCompositionPropertyTest",
@@ -216,7 +216,7 @@
           "skipped": 0
         },
         {
-          "class": "edu.ipcmax.experiments.EgpiR22IntegrationTest",
+          "class": "edu.ipcmax.experiments.EgpiAnytimeIntegrationTest",
           "tests": 3,
           "failures": 0,
           "errors": 0,
@@ -388,8 +388,8 @@
       "src/test/java/edu/ipcmax/core/profile/TimeProfileExactTest.java",
       "src/test/java/edu/ipcmax/core/validate/ExactPathValidatorTest.java",
       "src/test/java/edu/ipcmax/experiments/BenchOptionsTest.java",
+      "src/test/java/edu/ipcmax/experiments/EgpiAnytimeIntegrationTest.java",
       "src/test/java/edu/ipcmax/experiments/EgpiIntegrationTest.java",
-      "src/test/java/edu/ipcmax/experiments/EgpiR22IntegrationTest.java",
       "src/test/java/edu/ipcmax/experiments/ExperimentAblationsTest.java",
       "src/test/java/edu/ipcmax/experiments/ExperimentAlgorithmsTest.java",
       "src/test/java/edu/ipcmax/experiments/ExperimentCompletionAccountingTest.java",
@@ -611,8 +611,8 @@
       "src/test/java/edu/ipcmax/core/profile/TimeProfileExactTest.java",
       "src/test/java/edu/ipcmax/core/validate/ExactPathValidatorTest.java",
       "src/test/java/edu/ipcmax/experiments/BenchOptionsTest.java",
+      "src/test/java/edu/ipcmax/experiments/EgpiAnytimeIntegrationTest.java",
       "src/test/java/edu/ipcmax/experiments/EgpiIntegrationTest.java",
-      "src/test/java/edu/ipcmax/experiments/EgpiR22IntegrationTest.java",
       "src/test/java/edu/ipcmax/experiments/ExperimentAblationsTest.java",
       "src/test/java/edu/ipcmax/experiments/ExperimentAlgorithmsTest.java",
       "src/test/java/edu/ipcmax/experiments/ExperimentCompletionAccountingTest.java",

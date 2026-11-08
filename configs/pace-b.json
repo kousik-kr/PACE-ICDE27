@@ -17,9 +17,9 @@
     "--deterministic",
     "--shared-preprocessing",
     "--egpi-engine-profile",
-    "r22",
+    "anytime",
     "--anytime-checkpoints-ms",
     "250,500,750,1000,1250,1500,1750,2000,2250,2500,2750,3000,3250,3500,3750,4000,4250,4500,4750,5000,6000,7000,8000,9000,10000"
   ],
-  "provenance": "Final R22 EGPI executable and ICDE2027 master command template; explicit r22 engine profile."
+  "provenance": "Final EGPI executable and ICDE2027 master command template; explicit anytime engine profile."
 }

@@ -1166,7 +1166,7 @@ public final class PaceBench {
                 "partial_output_policy",
                 switch (options.algorithm) {
                     case "pace-x" -> "FAIL_CLOSED";
-                    case "pace-b", "pace-b-legacy-r13" -> "DETERMINISTIC_RETAINED_FRONTIER";
+                    case "pace-b", "pace-b-legacy" -> "DETERMINISTIC_RETAINED_FRONTIER";
                     case "pace-b-egpi-v1" -> "LAST_ATOMICALLY_COMMITTED_EXACT_VALIDATED_ENVELOPE";
                     case "iscope", "iscope-basic" -> "ANYTIME_VALIDATED_ENVELOPE";
                     case "iscope-opt1" -> "EXACT_PARTIAL_FUNCTION_PRUNED_ENVELOPE";
@@ -1259,7 +1259,7 @@ public final class PaceBench {
         result.put("ablation", options.ablation.id());
         result.put("execution_mode", switch (options.algorithm) {
             case "pace-x" -> "PACE_X_EXHAUSTIVE";
-            case "pace-b", "pace-b-legacy-r13" -> "PACE_B_BOUNDED";
+            case "pace-b", "pace-b-legacy" -> "PACE_B_BOUNDED";
             case "pace-b-egpi-v1" -> "PACE_B_EGPI_V1";
             case "exh-profile" -> "EXHAUSTIVE_PROFILE_ENUMERATION";
             case "pl-exact" -> "PROFILE_LABELING";
@@ -1361,7 +1361,7 @@ public final class PaceBench {
                 : pace.connectorPolicyId());
         result.put("connector_implementation_version", pace == null ? null
                 : pace.singleLabelFastestConnectorEnabled()
-                        ? "PACE_B_R13_STATIC_LB_SINGLE_CONNECTOR_V1"
+                        ? "PACE_B_STATIC_LB_SINGLE_CONNECTOR_V1"
                         : pace.connectorPolicyId());
         result.put("connector_selection_semantics", pace == null ? null
                 : pace.singleLabelFastestConnectorEnabled()
@@ -1501,7 +1501,7 @@ public final class PaceBench {
     private static String executionPolicy(String algorithm, int timeoutSeconds) {
         return switch (algorithm) {
             case "pace-x" -> "PACE_X";
-            case "pace-b", "pace-b-legacy-r13" -> "PACE_B_LEGACY_R13";
+            case "pace-b", "pace-b-legacy" -> "PACE_B_LEGACY";
             case "pace-b-egpi-v1" -> "PACE_B_EGPI_V1";
             case "iscope", "iscope-basic", "iscope-opt1", "iscope-optimized" ->
                     "ISCOPE_" + timeoutSeconds + "_SECOND_CAP";

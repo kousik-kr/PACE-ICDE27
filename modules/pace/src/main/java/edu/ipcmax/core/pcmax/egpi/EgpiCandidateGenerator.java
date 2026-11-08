@@ -173,10 +173,10 @@ public final class EgpiCandidateGenerator implements VersionedCandidateGenerator
         int unitsCommitted;
         int unitsEmpty;
         int unitsCancelled;
-        /** Gains credited by the ordered commits (R21), summed exactly as they arrive. */
+        /** Gains credited by the ordered commits (reference profile), summed exactly as they arrive. */
         ExactTime coverageGain = ExactTime.ZERO;
         ExactTime preferenceGain = ExactTime.ZERO;
-        /** Gains credited at epoch boundaries (R22): summed from approximations, exactly only on demand. */
+        /** Gains credited at epoch boundaries (anytime profile): summed from approximations, exactly only on demand. */
         final GainSum credited = new GainSum();
         ExactTemporalDomain validatedDomain = ExactTemporalDomain.empty();
         double frontierScore;
@@ -927,7 +927,7 @@ public final class EgpiCandidateGenerator implements VersionedCandidateGenerator
          * anytime answer is read from) follows completion order; the search decisions are not taken
          * from it. At the epoch boundary the published units are credited in batch order through
          * {@link ScoreStepEnvelope}, which reproduces exactly the per-unit gains the batch-order
-         * commits of R21 report, so improvement credit, frontier promotion and every later proposal,
+         * commits of the reference profile report, so improvement credit, frontier promotion and every later proposal,
          * admission and priority are those of the ordered policy. A deadline stops publication at
          * once: finished-but-unpublished units are recorded as such and never added.
          */

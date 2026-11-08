@@ -12,5 +12,5 @@
   "memory_limit_mb": 8192,
   "warmup_runs": 1,
   "extra_args": [],
-  "provenance": "Frozen R24 v0 iSCOPE-Profile OPT1 configuration."
+  "provenance": "Frozen v0 iSCOPE-Profile OPT1 configuration."
 }

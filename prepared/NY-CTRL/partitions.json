@@ -67,7 +67,7 @@
  },
  "dataset_id": "NY-Exact-radius",
  "dataset_semantic_checksum": "",
- "partition_algorithm": "R23 deterministic recursive spatial median bisection, x/y alternate; ties by other coordinate then node ID; depth=2; no seed",
+ "partition_algorithm": "Deterministic recursive spatial median bisection, x/y alternate; ties by other coordinate then node ID; depth=2; no seed",
  "partition_count": 4,
  "schema_version": 1
 }

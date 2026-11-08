@@ -38,7 +38,7 @@ import edu.ipcmax.core.validate.Path;
  */
 class EgpiCompletionAwareCommitTest {
     private static final QuerySpec TWO_PIVOT = query(1, 9, 0, 20, 30);
-    private static final EgpiEngineOptions ORDERED = EgpiEngineOptions.r21Reference();
+    private static final EgpiEngineOptions ORDERED = EgpiEngineOptions.referenceProfile();
     private static final EgpiEngineOptions COMPLETION = new EgpiEngineOptions(
             EgpiEngineOptions.CommitPolicy.COMPLETION_AWARE_V1, EgpiEngineOptions.EnvelopeEngine.REFINED_STAGED_COPY_V1);
 

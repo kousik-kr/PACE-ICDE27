@@ -5,21 +5,21 @@ import java.util.Locale;
 
 /**
  * Integer kernels of the exact rational arithmetic. {@link #gcd} returns the same value as
- * {@link BigInteger#gcd} for every input; the {@code R22} kernel computes it with Lehmer's
+ * {@link BigInteger#gcd} for every input; the {@code LEHMER} kernel computes it with Lehmer's
  * algorithm (Knuth, TAOCP vol. 2, Algorithm 4.5.2L) on 32-bit limbs, which does a few multi-limb
  * passes per 29 bits of reduction instead of the JDK's one pass per bit. Any inconsistency in its
  * bookkeeping falls back to the JDK result, so the kernel cannot change an exact value.
  *
  * <p>The selection is process wide and read on every call; it exists so that runs of the same
- * executable can be compared with and without the kernel. The default is the R21 kernel.</p>
+ * executable can be compared with and without the kernel. The default is the {@code JDK} kernel.</p>
  */
 public final class ExactKernel {
-    public enum Mode { R21, R22 }
+    public enum Mode { JDK, LEHMER }
 
     /** Smallest operand (in bits) for which Lehmer's passes beat the JDK's hybrid algorithm. */
     static final int LEHMER_MIN_BITS = 200;
     private static final long COFACTOR_LIMIT = 1L << 29;
-    private static volatile Mode mode = parse(System.getProperty("ipcmax.exact.kernel", "r21"));
+    private static volatile Mode mode = parse(System.getProperty("ipcmax.exact.kernel", "jdk"));
 
     private ExactKernel() { }
 
@@ -29,8 +29,8 @@ public final class ExactKernel {
 
     public static Mode parse(String name) {
         return switch (name.trim().toLowerCase(Locale.ROOT)) {
-            case "r21", "jdk" -> Mode.R21;
-            case "r22", "lehmer" -> Mode.R22;
+            case "jdk" -> Mode.JDK;
+            case "lehmer" -> Mode.LEHMER;
             default -> throw new IllegalArgumentException("unknown exact kernel: " + name);
         };
     }
@@ -55,7 +55,7 @@ public final class ExactKernel {
             ExactArithmeticDiagnostics.increment("exact_gcd_large_operand_calls");
             ExactArithmeticDiagnostics.add("exact_gcd_large_operand_bits", smaller);
         }
-        if (mode == Mode.R21 || smaller < LEHMER_MIN_BITS) return a.gcd(b);
+        if (mode == Mode.JDK || smaller < LEHMER_MIN_BITS) return a.gcd(b);
         return lehmer(a.abs(), b.abs());
     }
 

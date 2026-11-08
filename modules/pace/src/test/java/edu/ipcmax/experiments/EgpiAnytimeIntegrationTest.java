@@ -21,13 +21,13 @@ import edu.ipcmax.baselines.exact.preference.ExactReplayEngine;
 import edu.ipcmax.core.pcmax.egpi.EgpiEngineOptions;
 import edu.ipcmax.experiments.framework.QueryManifestIO;
 
-/** The R22 profile through the benchmark harness: provenance, anytime evidence and unchanged exact output. */
-class EgpiR22IntegrationTest {
+/** The anytime profile through the benchmark harness: provenance, anytime evidence and unchanged exact output. */
+class EgpiAnytimeIntegrationTest {
     @TempDir Path temporary;
 
     @AfterEach
     void restoreProcessDefaults() {
-        ExactKernel.configure(ExactKernel.Mode.R21);
+        ExactKernel.configure(ExactKernel.Mode.JDK);
         ExactReplayEngine.configure(ExactReplayEngine.Mode.SEQUENTIAL_V1, 8, 16);
     }
 
@@ -45,49 +45,49 @@ class EgpiR22IntegrationTest {
     }
 
     @Test
-    void benchOptionsParseTheR22FlagsAndBundleTheExactEngineIntoTheProfile() {
-        BenchOptions r22 = BenchOptions.parse(new String[] {"--algorithm", "pace-b-egpi-v1", "--dataset", "demo",
+    void benchOptionsParseTheAnytimeFlagsAndBundleTheExactEngineIntoTheProfile() {
+        BenchOptions anytime = BenchOptions.parse(new String[] {"--algorithm", "pace-b-egpi-v1", "--dataset", "demo",
                 "--query-file", "experiments/manifests/tiny.jsonl", "--output-jsonl", "target/x.jsonl",
-                "--egpi-engine-profile", "r22", "--anytime-output-dir", "target/anytime", "--anytime-checkpoints-ms", "1000,3000"});
-        assertEquals(EgpiEngineOptions.r22Anytime(), r22.algorithmConfig().egpiEngineOptions());
-        assertEquals(List.of(1000L, 3000L), r22.anytimeCheckpointsMs);
-        r22.applyExactSelections();
-        assertEquals(ExactKernel.Mode.R22, ExactKernel.mode());
+                "--egpi-engine-profile", "anytime", "--anytime-output-dir", "target/anytime", "--anytime-checkpoints-ms", "1000,3000"});
+        assertEquals(EgpiEngineOptions.anytimeProfile(), anytime.algorithmConfig().egpiEngineOptions());
+        assertEquals(List.of(1000L, 3000L), anytime.anytimeCheckpointsMs);
+        anytime.applyExactSelections();
+        assertEquals(ExactKernel.Mode.LEHMER, ExactKernel.mode());
         assertEquals(ExactReplayEngine.Mode.BALANCED_V1, ExactReplayEngine.mode());
         // explicit flags win over the bundle, and a run without the profile keeps the defaults
         restoreProcessDefaults();
         BenchOptions mixed = BenchOptions.parse(new String[] {"--algorithm", "pace-b-egpi-v1", "--dataset", "demo",
                 "--query-file", "experiments/manifests/tiny.jsonl", "--output-jsonl", "target/x.jsonl",
-                "--egpi-engine-profile", "r22", "--exact-kernel", "r21", "--exact-replay-engine", "sequential"});
+                "--egpi-engine-profile", "anytime", "--exact-kernel", "jdk", "--exact-replay-engine", "sequential"});
         mixed.applyExactSelections();
-        assertEquals(ExactKernel.Mode.R21, ExactKernel.mode());
+        assertEquals(ExactKernel.Mode.JDK, ExactKernel.mode());
         assertEquals(ExactReplayEngine.Mode.SEQUENTIAL_V1, ExactReplayEngine.mode());
         BenchOptions plain = BenchOptions.parse(new String[] {"--algorithm", "pace-b-egpi-v1", "--dataset", "demo",
                 "--query-file", "experiments/manifests/tiny.jsonl", "--output-jsonl", "target/x.jsonl"});
-        assertEquals(EgpiEngineOptions.r21Reference(), plain.algorithmConfig().egpiEngineOptions());
+        assertEquals(EgpiEngineOptions.referenceProfile(), plain.algorithmConfig().egpiEngineOptions());
         plain.applyExactSelections();
-        assertEquals(ExactKernel.Mode.R21, ExactKernel.mode());
+        assertEquals(ExactKernel.Mode.JDK, ExactKernel.mode());
         assertThrows(IllegalArgumentException.class, () -> BenchOptions.parse(new String[] {"--algorithm", "pace-b",
                 "--dataset", "demo", "--query-file", "experiments/manifests/tiny.jsonl", "--output-jsonl", "x",
-                "--egpi-engine-profile", "r22"}));
+                "--egpi-engine-profile", "anytime"}));
     }
 
     @Test
-    void theR22ProfileProducesTheSameExactFunctionAsTheR21ReferenceWithCanonicalCells() throws Exception {
-        List<JsonNode> reference = run("r21", "--egpi-engine-profile", "r21");
-        List<JsonNode> candidate = run("r22", "--egpi-engine-profile", "r22",
+    void theAnytimeProfileProducesTheSameExactFunctionAsTheReferenceProfileWithCanonicalCells() throws Exception {
+        List<JsonNode> reference = run("reference", "--egpi-engine-profile", "reference");
+        List<JsonNode> candidate = run("anytime", "--egpi-engine-profile", "anytime",
                 "--anytime-output-dir", temporary.resolve("anytime").toString(), "--anytime-checkpoints-ms", "1,100000");
         assertEquals(reference.size(), candidate.size());
         int compared = 0;
         for (int i = 0; i < reference.size(); i++) {
             JsonNode expected = reference.get(i), actual = candidate.get(i);
             assertEquals(expected.path("query").path("query_id").asText(), actual.path("query").path("query_id").asText());
-            assertEquals("R22_ANYTIME_V1", actual.path("configuration").path("egpi_engine").path("engine_profile").asText());
-            assertEquals("R21_REFERENCE", expected.path("configuration").path("egpi_engine").path("engine_profile").asText());
+            assertEquals("ANYTIME_V1", actual.path("configuration").path("egpi_engine").path("engine_profile").asText());
+            assertEquals("REFERENCE", expected.path("configuration").path("egpi_engine").path("engine_profile").asText());
             assertNotEquals(expected.path("provenance").path("configuration_sha256").asText(),
                     actual.path("provenance").path("configuration_sha256").asText(),
                     "the engine profile is part of the configuration identity");
-            assertEquals("R22", actual.path("configuration").path("exact_kernel").asText().replace("MODE.", ""));
+            assertEquals("LEHMER", actual.path("configuration").path("exact_kernel").asText().replace("MODE.", ""));
             assertEquals("BALANCED_V1", actual.path("configuration").path("exact_replay_engine").asText());
             assertEquals(expected.path("status").path("status_code").asText(), actual.path("status").path("status_code").asText());
             if (!expected.path("output").path("feasible").asBoolean()) {
@@ -98,7 +98,7 @@ class EgpiR22IntegrationTest {
             ExactPreferenceEnvelope refined = ExactPreferenceProfileCodec.decode(expected.path("output").path("profile").toString());
             ExactPreferenceEnvelope canonical = ExactPreferenceProfileCodec.decode(actual.path("output").path("profile").toString());
             assertEquals(ExactPreferenceProfileCodec.encode(refined.canonicalized()), ExactPreferenceProfileCodec.encode(canonical),
-                    "the R22 profile is the canonical form of the R21 profile");
+                    "the anytime profile is the canonical form of the reference profile");
             assertTrue(canonical.cells().size() <= refined.cells().size());
             assertEquals("FULL_VALIDATED_COVERAGE", actual.path("counters").path("coverage_status").asText());
             JsonNode anytime = actual.path("output").path("anytime");

@@ -913,7 +913,7 @@ public final class EgpiCandidateGenerator implements VersionedCandidateGenerator
          * anytime answer is read from) follows completion order; the search decisions are not taken
          * from it. At the epoch boundary the published units are credited in batch order through
          * {@link ScoreStepEnvelope}, which reproduces exactly the per-unit gains the batch-order
-         * commits of R21 report, so improvement credit, frontier promotion and every later proposal,
+         * commits of the reference profile report, so improvement credit, frontier promotion and every later proposal,
          * admission and priority are those of the ordered policy. A deadline stops publication at
          * once: finished-but-unpublished units are recorded as such and never added.
          */
